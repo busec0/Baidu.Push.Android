@@ -7,7 +7,7 @@ namespace AndroidNativeSample;
 [Activity(Label = "@string/app_name", MainLauncher = true)]
 public class MainActivity : Activity
 {
-    private static string apiKey = "<add key>";
+    private static string apiKey = "M4A0fzxA75dGvT1jabFZkjfY";
 
     protected override void OnCreate(Bundle? savedInstanceState)
     {

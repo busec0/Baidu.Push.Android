@@ -7,7 +7,7 @@ namespace BaiduAndroidSampleMaui;
 
 public partial class MainPage : ContentPage
 {
-    private string _baiduApiKey = "<add key>";
+    private string _baiduApiKey = "M4A0fzxA75dGvT1jabFZkjfY";
 
     public MainPage()
     {
