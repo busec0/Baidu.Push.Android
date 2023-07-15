@@ -1,6 +1,8 @@
-﻿using Android.Hardware.Usb;
+﻿using Android.Content;
+using Android.Hardware.Usb;
 using Android.OS;
 using Com.Baidu.Android.Pushservice;
+using Com.Busec0.Baiducustomandroidsdk;
 
 namespace AndroidNativeSample;
 
@@ -8,6 +10,7 @@ namespace AndroidNativeSample;
 public class MainActivity : Activity
 {
     private static string apiKey = "M4A0fzxA75dGvT1jabFZkjfY";
+    private SamplePushMessageReceiver? _notifDelegate;  //keep reference not to get it deinitialized 
 
     protected override void OnCreate(Bundle? savedInstanceState)
     {
@@ -17,11 +20,15 @@ public class MainActivity : Activity
         SetContentView(Resource.Layout.activity_main);
 
         var pushStartButton = FindViewById<Button>(Resource.Id.pushStartButton);
-        pushStartButton.Click += (s, e) =>
+        pushStartButton.Click += async (s, e) =>
         {
             PushSettings.EnableDebugMode(true);
-            PushManager.StartWork(ApplicationContext,
-                    PushConstants.LoginTypeApiKey, apiKey);
+            //_notifDelegate = new SamplePushMessageReceiver(); 
+            //XamarinAndroidCustomPushMessageReceiver.SetNotificationDelegate(_notifDelegate);
+            //PushManager.StartWork(ApplicationContext,
+            //    PushConstants.LoginTypeApiKey, apiKey);
+
+            await BaiduInternalNotificationService.StartAsync();
         };
     }
 }

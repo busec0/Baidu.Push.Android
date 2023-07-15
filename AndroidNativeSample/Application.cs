@@ -4,11 +4,21 @@ using Com.Busec0.Baiducustomandroidsdk;
 
 namespace AndroidNativeSample
 {
-    public class SamplePushMessageReceiver : Java.Lang.Object, IXamarinNotificationDelegate
+    [Application]
+    public class MyApplication : Application, IXamarinNotificationDelegate
     {
-        public SamplePushMessageReceiver()
+        public static MyApplication Instance { get; set; }
+
+        public MyApplication(IntPtr handle, Android.Runtime.JniHandleOwnership owner) : base(handle, owner) { }
+
+        public new void OnCreate()
         {
+            base.OnCreate();
+
+            Instance = this;
+            Console.WriteLine("Just log something here, to make sure it prints");
         }
+
 
         public void OnBind(Context? context, int errorCode, string appId, string userId, string channelId, string requestId)
         {

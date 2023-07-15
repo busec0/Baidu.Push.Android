@@ -1,6 +1,7 @@
 ﻿#if ANDROID
 using Android.OS;
 using Com.Baidu.Android.Pushservice;
+using Com.Busec0.Baiducustomandroidsdk;
 #endif
 
 namespace BaiduAndroidSampleMaui;
@@ -25,7 +26,11 @@ public partial class MainPage : ContentPage
 #if ANDROID
         var crtActivity = Platform.CurrentActivity;
         PushSettings.EnableDebugMode(true);
-        PushManager.StartWork(crtActivity.ApplicationContext, PushConstants.LoginTypeApiKey, _baiduApiKey);
+        if (crtActivity.ApplicationContext is MainApplication mauiAppContext)
+        {
+            XamarinAndroidCustomPushMessageReceiver.SetNotificationDelegate(mauiAppContext);
+            PushManager.StartWork(mauiAppContext, PushConstants.LoginTypeApiKey, _baiduApiKey);
+        }
 #endif
     }
 }
