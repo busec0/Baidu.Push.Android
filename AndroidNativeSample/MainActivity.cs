@@ -10,7 +10,6 @@ namespace AndroidNativeSample;
 public class MainActivity : Activity
 {
     private static string apiKey = "M4A0fzxA75dGvT1jabFZkjfY";
-    private SamplePushMessageReceiver? _notifDelegate;  //keep reference not to get it deinitialized 
 
     protected override void OnCreate(Bundle? savedInstanceState)
     {
@@ -23,8 +22,6 @@ public class MainActivity : Activity
         pushStartButton.Click += async (s, e) =>
         {
             PushSettings.EnableDebugMode(true);
-            //_notifDelegate = new SamplePushMessageReceiver(); 
-            //XamarinAndroidCustomPushMessageReceiver.SetNotificationDelegate(_notifDelegate);
             //PushManager.StartWork(ApplicationContext,
             //    PushConstants.LoginTypeApiKey, apiKey);
 

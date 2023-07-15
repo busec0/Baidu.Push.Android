@@ -50,7 +50,7 @@ namespace AndroidNativeSample
 
         public override void OnReceive(Context context, Intent intent)
         {
-            var baiduEvent = LoadFromIntent(intent);
+             var baiduEvent = LoadFromIntent(intent);
             _ = baiduEvent.EventType switch
             {
                 BaiduEventType.Bind => OnBind(baiduEvent),
